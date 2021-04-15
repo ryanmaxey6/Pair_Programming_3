@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     static final int REQUEST_IMAGE= 1;
     ImageView pic;
     Button button;
+    TouchListener touchListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         pic = findViewById(R.id.ivPic);
         button = findViewById(R.id.bTakePic);
+        touchListener = new TouchListener(this);
     }
 
     public void takePic(View view)
@@ -52,8 +54,12 @@ public class MainActivity extends AppCompatActivity {
         pic.setRotation((pic.getRotation() + 180) % 360);
     }
 
-    public void rotateImage(){
-        pic.setRotation(90);
+    public void rotateImageRight(){
+        pic.setRotation((pic.getRotation() + 90) % 360);
+    }
+
+    public void rotateImageLeft(){
+        pic.setRotation((pic.getRotation() - 90) % 360);
     }
 
 }
